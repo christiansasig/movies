@@ -1,0 +1,30 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+}
+apply from: '../basegradle/base.gradle'
+android {
+    buildTypes {
+        debug {
+            buildConfigField "String", "API_HOST", getProp(rootProject, "DEBUG_HOST_API")
+            buildConfigField "String", "API_KEY", getProp(rootProject, "DEBUG_API_KEY")
+            buildConfigField "String", "URL_IMAGE", getProp(rootProject, "DEBUG_HOST_IMAGE")
+        }
+        release {
+            buildConfigField "String", "API_HOST", getProp(rootProject, "RELEASE_HOST_API")
+            buildConfigField "String", "API_KEY", getProp(rootProject, "RELEASE_API_KEY")
+            buildConfigField "String", "URL_IMAGE", getProp(rootProject, "RELEASE_HOST_IMAGE")
+        }
+    }
+}
+
+dependencies {
+    // retrofit
+    api Retrofit.retrofit
+    api Retrofit.retrofitGson
+    implementation Okhttp3.loggingInterceptor
+}
+kapt {
+    correctErrorTypes true
+}

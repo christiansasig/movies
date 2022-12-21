@@ -1,0 +1,25 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "movies"
+include ':app'
+include ':uikit'
+include ':core'
+include ':dashboard'
+include ':home'
+include ':movie'
+include ':tvshow'
+include ':network'
+include ':domain'
+include ':moviedata'

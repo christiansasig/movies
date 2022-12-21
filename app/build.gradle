@@ -1,0 +1,43 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.devtools.ksp' version '1.6.21-1.0.5'
+}
+
+apply from: '../basegradle/baseui.gradle'
+
+android {
+
+    defaultConfig {
+        applicationId ApplicationId.id
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    ksp {
+        arg("compose-destinations.moduleName", "splash")
+        arg("compose-destinations.mode", "navgraphs")
+    }
+
+    applicationVariants.all { variant ->
+        kotlin.sourceSets {
+            getByName(variant.name) {
+                kotlin.srcDir("build/generated/ksp/${variant.name}/kotlin")
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation project(path: Modules.core)
+    implementation project(path: Modules.uikit)
+    implementation project(path: Modules.dashboard)
+    implementation Navigation.composeDestinationCore
+    implementation Navigation.composeDestionationAnimationCore
+    ksp Navigation.composeDestinationCompiler
+}

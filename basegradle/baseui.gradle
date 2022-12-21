@@ -1,0 +1,28 @@
+apply from: '../basegradle/base.gradle'
+
+android {
+    buildFeatures {
+        compose true
+    }
+}
+
+dependencies {
+    // compose ui
+    implementation AndroidCompose.composeUi
+    implementation AndroidCompose.composeMaterial3
+    implementation AndroidCompose.composePreview
+    implementation AndroidCompose.activityCompose
+    implementation AndroidCompose.composeConstraintLayout
+    androidTestImplementation AndroidCompose.composeTest
+    debugImplementation AndroidCompose.composeTooling
+    implementation(Hilt.hiltNavigationCompose)
+}
+
+
+
+
+
+
+
+
+

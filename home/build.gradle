@@ -1,0 +1,38 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.devtools.ksp' version '1.6.21-1.0.5'
+}
+apply from: '../basegradle/baseui.gradle'
+android {
+    namespace 'com.christiansasig.movies.home'
+
+    ksp {
+        arg("compose-destinations.moduleName", "home")
+        arg("compose-destinations.mode", "navgraphs")
+    }
+
+    libraryVariants.all { variant ->
+        kotlin.sourceSets {
+            getByName(variant.name) {
+                kotlin.srcDir("build/generated/ksp/${variant.name}/kotlin")
+            }
+        }
+    }
+}
+dependencies {
+    //implementation project(path: Modules.domain)
+    implementation project(path: Modules.core)
+    implementation project(path: Modules.uikit)
+    implementation Navigation.composeDestinationCore
+    implementation Navigation.composeDestionationAnimationCore
+    ksp Navigation.composeDestinationCompiler
+    // backstack
+    implementation Navigation.composeDestionationAnimationCore
+    ksp Navigation.composeDestinationCompiler
+    implementation Accompanist.accompanistPlaceHolder
+
+}
+kapt {
+    correctErrorTypes true
+}

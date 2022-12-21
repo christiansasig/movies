@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.christiansasig.movies.dashboard">
+    <application>
+        <activity
+            android:name="com.christiansasig.movies.dashboard.DashboardActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Movies"
+            android:windowSoftInputMode="adjustNothing|stateHidden" />
+    </application>
+</manifest>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Movies</string>
+    <string name="validator_required">Este campo es requerido</string>
+    <string name="general_text_no_internet_connection_title">Conéctate a internet</string>
+    <string name="error_network">Error durante la petición. Favor verifica tu conexión a internet.</string>
+    <string name="close">Cerrar</string>
+    <string name="home_title">Inicio</string>
+    <string name="movie_title">Peliculas</string>
+    <string name="tv_show_title">Peliculas</string>
+</resources>

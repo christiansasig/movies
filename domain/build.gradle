@@ -1,0 +1,12 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+apply from: '../basegradle/base.gradle'
+
+dependencies {
+    api project(path: Modules.movieData)
+}
+kapt {
+    correctErrorTypes true
+}
