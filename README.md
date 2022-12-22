@@ -6,11 +6,15 @@ Enter the apikey variable in the "local.properties" file
 For example: DEBUG_API_KEY=XXXXXXXXXX
 
 DEBUG_HOST_API="https://api.themoviedb.org/3/"
+</br>
 HOST_IMAGE="https://image.tmdb.org/t/p/w500/"
-DEBUG_API_KEY="<Here your api key>"
+</br>
+DEBUG_API_KEY="Here your api key"
+</br>
 RELEASE_HOST_API="https://api.themoviedb.org/3/"
-RELEASE_API_KEY="<Here your api key>"
-
+</br>
+RELEASE_API_KEY="Here your api key"
+</br>
 <img src="/screenshots/screenshot_1.jpg" width="200" />
 <img src="/screenshots/screenshot_2.jpg" width="200" />
 <img src="/screenshots/screenshot_3.jpg" width="200" />
