@@ -15,6 +15,8 @@ RELEASE_HOST_API="https://api.themoviedb.org/3/"
 </br>
 RELEASE_API_KEY="Here your api key"
 </br>
+</br>
+
 <img src="/screenshots/screenshot_1.jpg" width="200" />
 <img src="/screenshots/screenshot_2.jpg" width="200" />
 <img src="/screenshots/screenshot_3.jpg" width="200" />
