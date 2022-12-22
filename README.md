@@ -7,4 +7,5 @@ For example: DEBUG_API_KEY=XXXXXXXXXX
 ![ScreenShot](/screenshots/screenshot_1.jpg)
 ![ScreenShot](/screenshots/screenshot_2.jpg)
 ![ScreenShot](/screenshots/screenshot_3.jpg)
+[<img src="/screenshots/screenshot_3.jpg" width="100" />]
 Developed by: Christian F. Sasig, email: christiansasig@gmail.com
