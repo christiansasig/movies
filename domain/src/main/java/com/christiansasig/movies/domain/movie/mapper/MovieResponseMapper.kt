@@ -2,8 +2,8 @@ package com.christiansasig.movies.domain.movie.mapper
 
 import com.christiansasig.movies.moviedata.model.MoviePopularResult
 import com.christiansasig.movies.moviedata.model.MovieResult
-import com.christiansasig.movies.network.model.movie.popular.MoviePopularResponse
-import com.christiansasig.movies.network.model.movie.popular.MovieResponse
+import com.christiansasig.movies.network.model.movie.MoviePopularResponse
+import com.christiansasig.movies.network.model.movie.MovieResponse
 
 internal fun MoviePopularResponse.toMoviePopularResult() =
     MoviePopularResult(

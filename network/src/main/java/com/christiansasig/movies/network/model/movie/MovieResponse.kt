@@ -1,4 +1,4 @@
-package com.christiansasig.movies.network.model.movie.popular
+package com.christiansasig.movies.network.model.movie
 
 import com.google.gson.annotations.SerializedName
 

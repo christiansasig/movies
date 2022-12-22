@@ -23,17 +23,17 @@ enum class DashboardNavigationItems(
     ),
     DashboardProposal(
         DashboardMovieNavGraphs,
-        "dashboard_proposal_screen",
+        "dashboard_movies_screen",
         R.string.movie_title,
-        R.drawable.ic_proporsal,
-        R.drawable.ic_proporsal_active
+        R.drawable.ic_movies,
+        R.drawable.ic_movies_active
     ),
     DashboardSchedule(
         DashboardTvShowNavGraphs,
-        "dashboard_schedule_screen",
+        "dashboard_tvshow_screen",
         R.string.tv_show_title,
-        R.drawable.ic_calendar,
-        R.drawable.ic_calendar_active
+        R.drawable.ic_tv,
+        R.drawable.ic_tv_active
     ),
    ;
 

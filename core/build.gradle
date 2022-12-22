@@ -5,11 +5,14 @@ plugins {
 apply from: '../basegradle/baseui.gradle'
 android {
     buildTypes {
+        debug {
+            buildConfigField "String", "HOST_IMAGE", getProp(rootProject, "HOST_IMAGE")
+        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "HOST_IMAGE", getProp(rootProject, "HOST_IMAGE")
         }
     }
+
 }
 
 dependencies {

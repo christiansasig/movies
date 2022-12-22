@@ -7,5 +7,8 @@
     <string name="close">Cerrar</string>
     <string name="home_title">Inicio</string>
     <string name="movie_title">Peliculas</string>
-    <string name="tv_show_title">Peliculas</string>
+    <string name="popular_movie_title">Peliculas populares</string>
+    <string name="tv_show_title">Programas de tv</string>
+    <string name="popular_tv_show_title">Programas de tv populares</string>
+    <string name="now_playing_title">En cartelera hoy</string>
 </resources>

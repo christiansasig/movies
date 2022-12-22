@@ -1,28 +1,29 @@
 package com.christiansasig.movies.movie.screen
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.christiansasig.movies.core.R
 import com.christiansasig.movies.core.flow.rememberFlowWithLifecycle
 import com.christiansasig.movies.movie.navigator.DashboardMovieNavigatorProvider
 import com.christiansasig.movies.movie.uistate.MovieUiState
-import com.christiansasig.movies.movie.viewmodel.ProposalViewModel
+import com.christiansasig.movies.movie.viewmodel.MovieViewModel
 import com.christiansasig.movies.uikit.divider.UiDivider
+import com.christiansasig.movies.uikit.row.UiRowMovie
 import com.christiansasig.movies.uikit.text.UiTextHeadingBoldTitle
 import com.google.accompanist.placeholder.PlaceholderHighlight
 import com.google.accompanist.placeholder.material.placeholder
@@ -36,11 +37,9 @@ import com.ramcosta.composedestinations.annotation.RootNavGraph
 )
 @Destination
 @Composable fun DashboardMovieScreen(
-    viewModel: ProposalViewModel = hiltViewModel(),
+    viewModel: MovieViewModel = hiltViewModel(),
     navigator: DashboardMovieNavigatorProvider,
 ) {
-    val context = LocalContext.current
-
     val movieUiState by rememberFlowWithLifecycle(viewModel.movieUiState)
         .collectAsState(initial = MovieUiState.Empty)
 
@@ -54,55 +53,55 @@ import com.ramcosta.composedestinations.annotation.RootNavGraph
             modifier = Modifier
                 .padding(padding)
                 .fillMaxWidth()
-                .fillMaxHeight(),
+                .fillMaxHeight()
         ) {
             val (
-                answers,
-                button,
+                topPanel,
+                middlePanel,
             ) = createRefs()
-            LazyColumn(
+
+            Column(modifier = Modifier
+                .constrainAs(topPanel) {
+                    top.linkTo(parent.top)
+                    end.linkTo(parent.end)
+                    start.linkTo(parent.start)
+                }
+                .padding(start = 30.dp, end = 30.dp, top = 30.dp, bottom = 10.dp)
+            ) {
+                UiTextHeadingBoldTitle(
+                    modifier = Modifier
+                        .placeholder(
+                            visible = movieUiState.isLoading,
+                            highlight = PlaceholderHighlight.shimmer()
+                        ),
+                    text = stringResource(id = R.string.popular_movie_title),
+                    textAlign = TextAlign.Start,
+                    style = MaterialTheme.typography.headlineLarge,
+                )
+                UiDivider()
+            }
+
+            LazyVerticalGrid(
+                columns = GridCells.Adaptive(90.dp),
                 modifier = Modifier
-                    .constrainAs(answers) {
-                        top.linkTo(parent.top)
-                        bottom.linkTo(button.top)
+                    .constrainAs(middlePanel) {
+                        top.linkTo(topPanel.bottom)
+                        bottom.linkTo(parent.bottom)
                         end.linkTo(parent.end)
                         start.linkTo(parent.start)
                         width = Dimension.fillToConstraints
                         height = Dimension.fillToConstraints
                     }
-                    .fillMaxWidth()
-                    .fillMaxHeight()
-                    .padding(start = 30.dp, end = 30.dp, top = 30.dp, bottom = 10.dp),
+                    .padding(start = 30.dp, end = 30.dp, bottom = 10.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+                horizontalArrangement = Arrangement.spacedBy(5.dp)
             ) {
-                item {
-                    Column {
-                        UiTextHeadingBoldTitle(
-                            modifier = Modifier
-                                .placeholder(
-                                    visible = movieUiState.isLoading,
-                                    highlight = PlaceholderHighlight.shimmer()
-                                ),
-                            text = "title",
-                            textAlign = TextAlign.Start,
-                            style = MaterialTheme.typography.headlineLarge,
-                        )
-                        UiDivider()
-                    }
-                }
-
                 items(items = movieUiState.data?.results ?: emptyList()) { item ->
-                    Text(text = item.title ?: "")
+                    UiRowMovie(
+                        title = item.title ?: "",
+                        imageUrl =item.posterPath
+                    )
                 }
-            }
-            Column(modifier = Modifier
-                .constrainAs(button) {
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                    bottom.linkTo(parent.bottom)
-                }
-                .padding(end = 30.dp, start = 30.dp, top = 10.dp, bottom = 10.dp)
-            ) {
-
             }
         }
         LaunchedEffect(Unit) {

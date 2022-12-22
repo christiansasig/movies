@@ -3,6 +3,7 @@ package com.christiansasig.movies.dashboard.navigation.config
 import com.christiansasig.movies.dashboard.screen.DashboardNavGraph
 import com.christiansasig.movies.home.screen.destinations.DashboardHomeScreenDestination
 import com.christiansasig.movies.movie.screen.destinations.DashboardMovieScreenDestination
+import com.christiansasig.movies.movie.screen.destinations.DashboardTvShowScreenDestination
 import com.ramcosta.composedestinations.spec.DestinationSpec
 import com.ramcosta.composedestinations.spec.NavGraphSpec
 import com.ramcosta.composedestinations.spec.Route
@@ -70,7 +71,7 @@ internal val DashboardMovieNavGraphs = object : NavGraphSpec {
                 }
 
     override val route: String
-        get() = "navgraph-router-dashboard-proposal"
+        get() = "navgraph-router-dashboard-movies"
 
     override val startRoute: Route
         get() = DashboardMovieScreenDestination
@@ -80,17 +81,17 @@ internal val DashboardTvShowNavGraphs = object : NavGraphSpec {
     override val destinationsByRoute: Map<String, DestinationSpec<*>>
         get() =
             listOf(
-                DashboardMovieScreenDestination
+                DashboardTvShowScreenDestination
             )
                 .associateBy {
                     it.route
                 }
 
     override val route: String
-        get() = "navgraph-router-dashboard-schedule"
+        get() = "navgraph-router-dashboard-tvshow"
 
     override val startRoute: Route
-        get() = DashboardMovieScreenDestination
+        get() = DashboardTvShowScreenDestination
 }
 
 

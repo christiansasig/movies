@@ -20,6 +20,7 @@
             <option value="$PROJECT_DIR$/moviedata" />
             <option value="$PROJECT_DIR$/network" />
             <option value="$PROJECT_DIR$/tvshow" />
+            <option value="$PROJECT_DIR$/tvshowdata" />
             <option value="$PROJECT_DIR$/uikit" />
           </set>
         </option>

@@ -6,6 +6,7 @@ apply from: '../basegradle/base.gradle'
 
 dependencies {
     api project(path: Modules.movieData)
+    api project(path: Modules.tvshowData)
 }
 kapt {
     correctErrorTypes true

@@ -21,7 +21,7 @@ android {
     }
 }
 dependencies {
-    //implementation project(path: Modules.domain)
+    implementation project(path: Modules.domain)
     implementation project(path: Modules.core)
     implementation project(path: Modules.uikit)
     implementation Navigation.composeDestinationCore
