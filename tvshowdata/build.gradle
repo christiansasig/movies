@@ -1,0 +1,18 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id("kotlin-parcelize")
+}
+
+apply from: '../basegradle/baseui.gradle'
+apply plugin: 'kotlin-android'
+
+android {
+    namespace 'com.christiansasig.movies.tvshowdata'
+}
+
+dependencies {
+    // modules
+    api project(path: Modules.network)
+    implementation project(path: Modules.core)
+}
